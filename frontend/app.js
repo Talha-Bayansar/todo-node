@@ -23,10 +23,6 @@ async function getData(){
 
 async function addData(e){
     e.preventDefault();
-    // span = document.createElement("span");
-    // span.classList('.data__item');
-    // span.innerText = input;
-    // dataDiv.appendChild(span);
     const input = e.target.parentElement.querySelector('.todo__input').value;
     const fetchOptions = {
         method: 'POST',
