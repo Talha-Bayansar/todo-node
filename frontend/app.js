@@ -37,6 +37,7 @@ async function addData(e){
     const body = await response.json();
     const data = body.map(t => `<span class="data__item">${t.todo}</span>`).toString();
     dataDiv.innerHTML = data.replaceAll(',', '\n');
+    todoInput.value = null;
 }
 
 //eventlisteners
