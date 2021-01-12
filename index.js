@@ -6,18 +6,19 @@ const MongoClient = require('mongodb').MongoClient;
 
 const app = express();
 const port = 3000;
-const conString = 'mongodb+srv://talha:bayansar@cluster0.hgfnb.mongodb.net/nodetodo?retryWrites=true&w=majority';
+const uri = "mongodb+srv://talha:password@cluster0.hgfnb.mongodb.net/namedb?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  if (err) console.log("error")
+  // perform actions on the collection object
+  client.close();
+});
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-MongoClient.connect(conString, {
-    useUnifiedTopology: true
-  }, (error, client) => {
-if (error) return console.log(error)
-console.log('Connected to db!')
-})
 
 app.get('/', (req, res) => {
     res.json(data);
